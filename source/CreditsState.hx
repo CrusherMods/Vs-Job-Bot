@@ -28,9 +28,16 @@ class CreditsState extends MusicBeatState
 		['Vs Job Bot Team'],
 		['CrusherMods',         'crushermods',      'Owner/Coder of the Mod',                           'https://twitter.com/CrusherNotDrip',   0xFF233296],
 		[''],
-		['Special Thanks'],
-		['Shadow Mario',		'shadowmario',		'Credits Menu\n I stole from psych lmfao',			'https://twitter.com/Shadow_Mario_',	0xFF444444],
+		['CoreDEV Engine'],
+		['CoreDEV',             'coredev',          'Main Programmer and Animator of CoreDEV Engine',   'https://www.youtube.com/channel/UCQhxUlrUtrMZjeA05sbEMmA', 0xFF0066FE],
+		['Shadow Mario',		'shadowmario',		'Downscroll Codes, Custom songs and charts / mods folder, and health icon offset codes \nCredits Menu (I stole from psych lmfao)',			'https://twitter.com/Shadow_Mario_',	0xFF444444],
+		['KadeDev',             'kadedev',          'Some of the note press calculations codes',        'https://twitter.com/kade0912',         0xFF4B6548],
+		['RozeBud',             'rozebud',          'KeyBinds menu codes',                              'https://twitter.com/helpme_thebigt',   0xFF7F0037],
 		[''],
+		/*
+		['Special Thanks'],
+		[''],
+		*/
 		["Funkin' Crew"],
 		['ninjamuffin99',		'ninjamuffin99',	"Programmer of Friday Night Funkin'",				'https://twitter.com/ninja_muffin99',	0xFFF73838],
 		['PhantomArcade',		'phantomarcade',	"Animator of Friday Night Funkin'",					'https://twitter.com/PhantomArcade3K',	0xFFFFBB1B],
