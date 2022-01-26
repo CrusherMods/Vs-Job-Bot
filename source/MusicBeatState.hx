@@ -75,4 +75,6 @@ class MusicBeatState extends FlxUIState
 	{
 		//do literally nothing dumbass
 	}
+
+	public static function switchState(arg0:MainMenuState) {}
 }

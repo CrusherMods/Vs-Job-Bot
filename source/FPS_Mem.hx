@@ -50,9 +50,9 @@ class CDevFPSMem extends TextField
 		if (visible)
 		{
 			#if debug 
-			text = "FPS: " + times.length + "\nMEM: " + mem + " MB\nMEM Peak: " + memPeak + " MB" + "\nCDEV-FNF v0.1.1" + '\n[DEBUG MODE]';
+			text = "FPS: " + times.length + "\nMEM: " + mem + " MB\nMEM Peak: " + memPeak + " MB" + "\nVs Job Bot v2.0.0" + '\n[DEBUG MODE]';
 			#else
-			text = "FPS: " + times.length + "\nMEM: " + mem + " MB\nMEM Peak: " + memPeak + " MB" + "\nCDEV-FNF v0.1.1";
+			text = "FPS: " + times.length + "\nMEM: " + mem + " MB\nMEM Peak: " + memPeak + " MB" + "\nVs Job Bot v2.0.0";
 			#end
 		}
 	}

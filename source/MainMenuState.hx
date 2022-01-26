@@ -32,9 +32,9 @@ class MainMenuState extends MusicBeatState
 	var menuItems:FlxTypedGroup<FlxSprite>;
 
 	#if !switch
-	var optionShit:Array<String> = ['story mode', 'freeplay', 'youtube', 'donate', 'options'];
+	var optionShit:Array<String> = ['story mode', 'freeplay', 'credits', 'donate', 'options'];
 	#else
-	var optionShit:Array<String> = ['story mode', 'freeplay'];
+	var optionShit:Array<String> = ['story mode', 'freeplay', 'credits'];
 	#end
 
 	public static var coreEngineText:String = "CoreDEV-Engine v0.1.1";
@@ -142,12 +142,18 @@ class MainMenuState extends MusicBeatState
 		randomTxt.setFormat("VCR OSD Mono", 26, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		add(randomTxt);
 
+		var jobbot:FlxText = new FlxText(20, FlxG.height - 55, 1000, vsjobbotVersion, 16);
+		jobbot.scrollFactor.set();
+		jobbot.setFormat("VCR OSD Mono", 16, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+		add(jobbot);
+
 		versionShit.borderSize = 1.5;
 		versionShit.borderQuality = 1;
 		engineText.borderSize = 1.5;
 		engineText.borderQuality = 1;
-
 		randomTxt.borderSize = 2;
+		jobbot.borderQuality = 1;
+		jobbot.borderSize = 1.5;
 
 		CDevConfig.utils.cacheUISounds();
 
@@ -330,6 +336,17 @@ class MainMenuState extends MusicBeatState
 					// FlxTransitionableState.skipNextTransIn = true;
 					// FlxTransitionableState.skipNextTransOut = true;
 					FlxG.switchState(new OptionsState());
+
+				case 'credits':
+					if (FlxG.save.data.smoothAF)
+					{
+						FlxTween.cancelTweensOf(FlxG.camera);
+						FlxTween.tween(FlxG.camera, {zoom: 1.5}, 1, {ease: FlxEase.quadOut});
+					}
+	
+					FlxG.switchState(new CreditsState());
+	
+					trace("Credits Menu Selected");
 			}
 		}
 

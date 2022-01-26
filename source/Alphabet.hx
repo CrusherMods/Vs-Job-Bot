@@ -246,6 +246,8 @@ class Alphabet extends FlxSpriteGroup
 
 		super.update(elapsed);
 	}
+
+	public var forceX:Float;
 }
 
 class AlphaCharacter extends FlxSprite

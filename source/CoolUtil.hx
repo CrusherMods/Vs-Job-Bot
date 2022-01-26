@@ -35,4 +35,6 @@ class CoolUtil
 		}
 		return dumbArray;
 	}
+
+	public static function browserLoad(arg0) {}
 }
