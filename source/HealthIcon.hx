@@ -68,50 +68,54 @@ class HealthIcon extends FlxSprite
 		var BLUEC:Int = 0;
 		switch (char)
 		{
-			case 'bf' | 'bf-pixel':
-				REDC = 30;
-				GREENC = 149;
-				BLUEC = 179;
+			case 'bf':
+				REDC = 49;
+				GREENC = 176;
+				BLUEC = 209;
 			case 'spooky':
-				REDC = 175;
-				GREENC = 133;
-				BLUEC = 89;
+				REDC = 213;
+				GREENC = 126;
+				BLUEC = 0;
 			case 'pico':
-				REDC = 158;
-				GREENC = 190;
-				BLUEC = 45;
+				REDC = 183;
+				GREENC = 216;
+				BLUEC = 85;
 			case 'mom':
-				REDC = 199;
-				GREENC = 60;
-				BLUEC = 120;
+				REDC = 216;
+				GREENC = 85;
+				BLUEC = 142;
 			case 'dad':
-				REDC = 159;
-				GREENC = 70;
-				BLUEC = 194;
+				REDC = 175;
+				GREENC = 102;
+				BLUEC = 206;
 			case 'senpai':
-				REDC = 244;
-				GREENC = 148;
-				BLUEC = 80;
+				REDC = 255;
+				GREENC = 170;
+				BLUEC = 111;
 			case 'spirit':
-				REDC = 219;
-				GREENC = 46;
-				BLUEC = 90;
+				REDC = 255;
+				GREENC = 60;
+				BLUEC = 110;
+			case 'bf-pixel':
+				REDC = 123;
+				GREENC = 214;
+				BLUEC = 246;
 			case 'gf':
-				REDC = 133;
+				REDC = 165;
 				GREENC = 0;
-				BLUEC = 60;
+				BLUEC = 77;
 			case 'parents':
-				REDC = 192;
-				GREENC = 37;
-				BLUEC = 187;
+				REDC = 216;
+				GREENC = 85;
+				BLUEC = 142;
 			case 'monster':
-				REDC = 224;
-				GREENC = 221;
-				BLUEC = 42;
+				REDC = 243;
+				GREENC = 255;
+				BLUEC = 110;
 			default:
-				REDC = 133;
-				GREENC = 133;
-				BLUEC = 133;
+				REDC = 161;
+				GREENC = 161;
+				BLUEC = 161;
 		}
 
 		charColorArray = [REDC, GREENC, BLUEC];

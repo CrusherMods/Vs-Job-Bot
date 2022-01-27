@@ -984,6 +984,16 @@ class PlayState extends MusicBeatState
 		engineWM.setPosition(20, FlxG.height - engineWM.height - 20);
 		add(engineWM);
 
+		var jobbot:FlxText;
+		jobbot = new FlxText(0, 0, MainMenuState.vsjobbotVersion + (FlxG.save.data.testMode ? ' - [TESTMODE]' : ''), 20);
+		jobbot.y -= 3;
+		jobbot.setFormat(Paths.font("vcr.ttf"), 16, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+		jobbot.scrollFactor.set();
+		// jobbot.screenCenter(X);
+		jobbot.borderSize = 1.5;
+		jobbot.setPosition(20, FlxG.height - jobbot.height - 40);
+		add(jobbot);
+
 		susHuh = new FlxText(0, 0, SONG.song + ' ' + difficultytxt, 20);
 		susHuh.setFormat(Paths.font("vcr.ttf"), 16, FlxColor.WHITE, RIGHT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		susHuh.scrollFactor.set();
@@ -992,6 +1002,7 @@ class PlayState extends MusicBeatState
 		add(susHuh);
 
 		engineWM.antialiasing = FlxG.save.data.antialiasing;
+		jobbot.antialiasing = FlxG.save.data.antialiasing;
 		susHuh.antialiasing = FlxG.save.data.antialiasing;
 
 		add(songPosBG);
@@ -1034,6 +1045,7 @@ class PlayState extends MusicBeatState
 		grpNotePresses.cameras = [camHUD];
 
 		engineWM.cameras = [camHUD];
+		jobbot.cameras = [camHUD];
 		susHuh.cameras = [camHUD];
 
 		botplayTxt.cameras = [camHUD];
