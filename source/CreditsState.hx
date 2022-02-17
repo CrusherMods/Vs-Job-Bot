@@ -25,8 +25,14 @@ class CreditsState extends MusicBeatState
 	private var iconArray:Array<AttachedSprite> = [];
 
 	private static var creditsStuff:Array<Dynamic> = [ //Name - Icon name - Description - Link - BG Color 
+		#if html5 //only doing this cuz websites dont often give a link to the mod just like vs paint
+		['Download the Mod here!'],
+		['Press Enter',         '',                 '',                                                 'https://gamebanana.com/',              0xFF000000],
+		[''],
+		#end
 		['Vs Job Bot Team'],
 		['CrusherMods',         'crushermods',      'Owner/Coder of the Mod',                           'https://twitter.com/CrusherNotDrip',   0xFF233296],
+		['Join the Discord!',   'discord',          'Join the Discord!',                                'https://discord.gg/2NcPKpSm3m',        0xFF5165F6],
 		[''],
 		['CoreDEV Engine'],
 		['CoreDEV',             'coredev',          'Main Programmer and Animator of CoreDEV Engine',   'https://www.youtube.com/channel/UCQhxUlrUtrMZjeA05sbEMmA', 0xFF0066FE],

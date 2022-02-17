@@ -223,6 +223,7 @@ class MainMenuState extends MusicBeatState
 					changeText();
 				}
 			}
+			
 			if (controls.UP_P)
 			{
 				FlxG.sound.play(Paths.sound('scrollMenu'));

@@ -9,7 +9,7 @@ class NotePress extends FlxSprite
 	public function new(x:Float = 0, y:Float = 0, ?note:Int = 0) {
 		super(x, y);
 
-		var fileName:String = 'NOTE_press';
+		var fileName:String = (FlxG.save.data.customNoteRipples ? 'CDEVNOTE_press' : 'SPLASHNOTE_press');
 
 		loadImage(fileName);
 
@@ -41,7 +41,7 @@ class NotePress extends FlxSprite
 	}
 
 	function loadImage(skin:String) {
-		frames = Paths.getSparrowAtlas(skin);
+		frames = Paths.getSparrowAtlas('notes/' + (FlxG.save.data.customNoteRipples ? 'CDEVNOTE_press' : 'SPLASHNOTE_press'),'shared');
 		animation.addByPrefix("left", 'leftclick', 30, false);
 		animation.addByPrefix("down", 'downclick', 30, false);
 		animation.addByPrefix("up", 'upclick',30, false);

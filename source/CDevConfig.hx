@@ -114,6 +114,15 @@ class CDevConfig extends MusicBeatState
 
             if (FlxG.save.data.testMode == null)
                 FlxG.save.data.testMode = false;
+
+            if(FlxG.save.data.volume != null)
+            {
+                FlxG.sound.volume = FlxG.save.data.volume;
+            }
+            if (FlxG.save.data.mute != null)
+            {
+                FlxG.sound.muted = FlxG.save.data.mute;
+            }
         }
 
     public static function setFPS(daSet:Int)
@@ -136,6 +145,6 @@ class CDevConfig extends MusicBeatState
         FlxG.save.data.fullinfo = true;
         FlxG.save.data.offset = 0;
         FlxG.save.data.frames = 10;
-        FlxG.save.data.ghost = false;
+        FlxG.save.data.ghost = true;
     }
 }

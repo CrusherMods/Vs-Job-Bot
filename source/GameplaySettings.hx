@@ -20,6 +20,7 @@ class GameplaySettings extends MusicBeatSubstate
 {
 	var loaded:Bool = false;
 	private var curSelected:Int = 0;
+	var notePreview:FlxSprite;
 
 	var options:Array<String> = [
 		'Change Keybinds',
@@ -29,6 +30,7 @@ class GameplaySettings extends MusicBeatSubstate
 		'Botplay Mode',
 		'FPS Cap',
 		'Enable Note Ripples',
+		'Note Ripples Style',
 		'Enable Song Time',
 		'Flashing Lights',
 		'Camera Zooming',
@@ -45,6 +47,7 @@ class GameplaySettings extends MusicBeatSubstate
 		'Ghost Tapping',
 		'Botplay Mode',
 		'Enable Note Ripples',
+		'Note Ripples Style',
 		'Enable Song Time',
 		'Flashing Lights',
 		'Camera Zooming',
@@ -105,6 +108,23 @@ class GameplaySettings extends MusicBeatSubstate
 				loaded = true;
 			}
 	}
+
+	function createNote()
+		{
+			if (notePreview != null)
+				remove(notePreview);
+	
+			var imgFrames = Paths.getSparrowAtlas('notes/' + (FlxG.save.data.customNoteRipples ? 'CDEVNOTE_press' : 'SPLASHNOTE_press'), 'shared');
+			notePreview = new FlxSprite(1000, 0);
+			notePreview.frames = imgFrames;
+			notePreview.animation.addByPrefix('idle', 'downclick', 30, false);
+			notePreview.animation.addByPrefix('down', 'downclick', 30, false);
+			notePreview.antialiasing = FlxG.save.data.antialiasing;
+			notePreview.screenCenter(Y);
+			add(notePreview);
+	
+			notePreview.animation.play('idle', true);
+		}
 
 	override function update(elapsed:Float)
 	{
@@ -187,6 +207,8 @@ class GameplaySettings extends MusicBeatSubstate
 				FlxG.save.data.botplay = !FlxG.save.data.botplay;
 			case 'Enable Note Ripples' | 'Disable Note Ripples':
 				FlxG.save.data.noteRipples = !FlxG.save.data.noteRipples;
+			case 'CDEV Note Ripples' | 'Note Splashes':
+				FlxG.save.data.customNoteRipples = !FlxG.save.data.customNoteRipples;
 			case 'Enable Song Time' | 'Disable Song Time':
 				FlxG.save.data.songtime = !FlxG.save.data.songtime;
 			case 'Flashing Lights' | 'No Flashing Lights':
@@ -298,6 +320,15 @@ class GameplaySettings extends MusicBeatSubstate
 
 		changeText();
 
+		if (options[curSelected] == (FlxG.save.data.customNoteRipples ? 'CDEV Note Ripples' : 'Note Splashes'))
+			{
+				createNote();
+			}
+			else
+			{
+				remove(notePreview);
+			}
+
 		for (item in grpOptions.members)
 		{
 			item.targetY = bullShit - curSelected;
@@ -311,6 +342,17 @@ class GameplaySettings extends MusicBeatSubstate
 		}
 	}
 
+	override function beatHit()
+		{
+			super.beatHit();
+			if (notePreview != null)
+				{
+					notePreview.animation.play('down', true);
+					notePreview.centerOffsets();
+				}
+				
+		}
+
 	function updateOptions()
 		{
 			if (!fromPause)
@@ -323,6 +365,7 @@ class GameplaySettings extends MusicBeatSubstate
 						FlxG.save.data.botplay ? 'Botplay Mode' : 'Not Botplay Mode',
 						'FPS Cap',
 						FlxG.save.data.noteRipples ? 'Enable Note Ripples' : 'Disable Note Ripples',
+						FlxG.save.data.customNoteRipples ? 'CDEV Note Ripples' : 'Note Splashes',
 						FlxG.save.data.songtime ? 'Enable Song Time' : 'Disable Song Time',
 						FlxG.save.data.flashing ? 'Flashing Lights' : 'No Flashing Lights',
 						FlxG.save.data.camZoom ? 'Camera Zooming' : 'No Camera Zooming',
@@ -339,6 +382,7 @@ class GameplaySettings extends MusicBeatSubstate
 						FlxG.save.data.ghost ? 'Ghost Tapping' : 'No Ghost Tapping',
 						FlxG.save.data.botplay ? 'Botplay Mode' : 'Not Botplay Mode',
 						FlxG.save.data.noteRipples ? 'Enable Note Ripples' : 'Disable Note Ripples',
+						FlxG.save.data.customNoteRipples ? 'CDEV Note Ripples' : 'Note Splashes',
 						FlxG.save.data.songtime ? 'Enable Song Time' : 'Disable Song Time',
 						FlxG.save.data.flashing ? 'Flashing Lights' : 'No Flashing Lights',
 						FlxG.save.data.camZoom ? 'Camera Zooming' : 'No Camera Zooming',
@@ -354,6 +398,7 @@ class GameplaySettings extends MusicBeatSubstate
 						FlxG.save.data.botplay ? 'Botplay Mode' : 'Not Botplay Mode',
 						'FPS Cap',
 						FlxG.save.data.noteRipples ? 'Enable Note Ripples' : 'Disable Note Ripples',
+						FlxG.save.data.customNoteRipples ? 'CDEV Note Ripples' : 'Note Splashes',
 						FlxG.save.data.songtime ? 'Enable Song Time' : 'Disable Song Time',
 						FlxG.save.data.flashing ? 'Flashing Lights' : 'No Flashing Lights',
 						FlxG.save.data.camZoom ? 'Camera Zooming' : 'No Camera Zooming',
@@ -369,6 +414,7 @@ class GameplaySettings extends MusicBeatSubstate
 						FlxG.save.data.ghost ? 'Ghost Tapping' : 'No Ghost Tapping',
 						FlxG.save.data.botplay ? 'Botplay Mode' : 'Not Botplay Mode',
 						FlxG.save.data.noteRipples ? 'Enable Note Ripples' : 'Disable Note Ripples',
+						FlxG.save.data.customNoteRipples ? 'CDEV Note Ripples' : 'Note Splashes',
 						FlxG.save.data.songtime ? 'Enable Song Time' : 'Disable Song Time',
 						FlxG.save.data.flashing ? 'Flashing Lights' : 'No Flashing Lights',
 						FlxG.save.data.camZoom ? 'Camera Zooming' : 'No Camera Zooming',
@@ -397,7 +443,9 @@ class GameplaySettings extends MusicBeatSubstate
 				case 'FPS Cap':
 					text = 'Choose how many frames per second that this engine should run at.\n(Current Value: ' + FlxG.save.data.fpscap + ")";
 				case 'Enable Note Ripples' | 'Disable Note Ripples':
-					text = 'If you hit "Sick!!" Rating, it will show circle ripples at your\nNote strum line!';
+					text = 'If you hit "Sick!!" Rating, it will show ripples at your\nNote strum line!';
+				case 'CDEV Note Ripples' | 'Note Splashes':
+					text = 'Select a custom Note Ripple (Only Works if Note Ripples are turned on)';
 				case 'Enable Song Time' | 'Disable Song Time':
 					text = 'Hide / Show the Song time (as a bar)';
 				case 'Flashing Lights' | 'No Flashing Lights':
